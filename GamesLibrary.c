@@ -5,9 +5,10 @@
 #include <time.h>
 
 
-#define food_char 'o'
+#define food_char (char)3
 #define empty_char ' '
-#define snake_char '8'
+#define snake_char (char)254
+#define head_char (char)1
 
 
 typedef struct node{
@@ -197,7 +198,10 @@ void printing(){
 	for(y=0;y<rows;y++){
 		printf("*");
 		for(x=0;x<colms;x++){
-			if(snakelocation(x,y)){
+			if(x==head->x && y==head->y){
+				printf("%c",head_char);
+			}
+			else if(snakelocation(x,y)){
 				printf("%c",snake_char);
 			}
 			else if(x==foodx && y==foody){
@@ -493,6 +497,5 @@ int main(){
             exit(0);
     }
 }
-
 
 
